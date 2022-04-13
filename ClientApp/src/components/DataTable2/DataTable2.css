@@ -1,0 +1,12 @@
+.bgGreen {
+  background-color: green !important;
+  display: inline-block;
+  height: 1rem;
+  width: 1rem;
+}
+.bgRed {
+  background-color: red !important;
+  display: inline-block;
+  height: 1rem;
+  width: 1rem;
+}
