@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import api from '../../api';
 
 const Detail = () => {
   const [data, setData] = useState([]);
-  api.get;
   return (
     <>
       <div className="row">
