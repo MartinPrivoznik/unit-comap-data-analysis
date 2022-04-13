@@ -22,10 +22,15 @@ const Overview = (sn) => {
     getData();
   }, []);
 
+  const passCount = dataApi ? dataApi.filter((data) => data.success).length : 0;
+  const failCount = dataApi
+    ? dataApi.filter((data) => !data.success).length
+    : 0;
+
   const statsData = {
     columns: [
-      ["PASS", 382],
-      ["FAIL", 22],
+      ["PASS", passCount],
+      ["FAIL", failCount],
     ],
     type: "donut",
   };
@@ -86,8 +91,8 @@ const Overview = (sn) => {
               <C3Chart data={statsData} color={donutColor} />
             </div>
             <p>
-              Vadných produktů: <b>22</b> <br />
-              Bezchybných produktů: <b>382</b>{" "}
+              Vadných produktů: <b>{failCount}</b> <br />
+              Bezchybných produktů: <b>{passCount}</b>{" "}
             </p>
           </div>
         </div>
