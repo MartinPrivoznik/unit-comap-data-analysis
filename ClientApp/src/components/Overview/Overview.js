@@ -1,15 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { addDays } from "date-fns";
 import { DateRangePicker } from "react-date-range";
 import C3Chart from "react-c3js";
 import DataTable from "../DataTable/DataTable";
 import "./Overview.css";
 import "c3/c3.css";
+import { getLastTestsBySn } from "../../actions/actions";
 
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 
-const Overview = () => {
+const Overview = (sn) => {
+  const [dataApi, setData] = useState(null);
+
+  useEffect(() => {
+    const getData = async () => {
+      const data = await getLastTestsBySn("IL PG24A");
+      setData(data);
+    };
+
+    getData();
+  }, []);
+
   const statsData = {
     columns: [
       ["PASS", 382],
