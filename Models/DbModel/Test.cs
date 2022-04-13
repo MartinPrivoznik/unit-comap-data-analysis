@@ -7,9 +7,9 @@ namespace UnIT_ComAp.Models.DbModel
 {
     public class Test
     {
-        public Guid HeadId { get; set; }
-        public int GroupId { get; set; }
-        public int Id { get; set; }
+        public long HeadId { get; set; }
+        public long GroupId { get; set; }
+        public long Id { get; set; }
         public string Title { get; set; }
 
         [NotMapped]
