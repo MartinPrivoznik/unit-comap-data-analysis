@@ -1,12 +1,20 @@
 import React from "react";
 import DataTable from "../DataTable/DataTable";
+import "./Detail.css";
+
+const fuck = "PASS";
 
 const Detail = () => {
   return (
     <>
       <div className="row">
-        <h4>IL4 PG24A</h4>
-        <h2>S/N: 21510A00</h2>
+        <div className="col-md-6">
+          <h4>IL4 PG24A</h4>
+          <h2>S/N: 21510A00</h2>
+        </div>
+        <div className="col-md-6">
+          <h1 className={fuck == "PASS" ? "greenTitle" : "redTitle"}>PASS</h1>
+        </div>
       </div>
       <div className="row">
         <div className="col-md-4">
@@ -46,7 +54,7 @@ const Detail = () => {
             <span className="d-block d-sm-none">
               <i className="fas fa-home"></i>
             </span>
-            <span className="d-none d-sm-block">Home</span>
+            <span className="d-none d-sm-block">21. 6. 2020 8:00</span>
           </a>
         </li>
       </ul>
