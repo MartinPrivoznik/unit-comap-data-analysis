@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Detail = () => {
   return (
@@ -9,59 +9,64 @@ const Detail = () => {
       <div className="row">
         <h2>Chybovost produktu</h2>
       </div>
-      <ul class="nav nav-pills nav-justified" role="tablist">
-        <li class="nav-item waves-effect waves-light">
+      <ul className="nav nav-pills nav-justified" role="tablist">
+        <li className="nav-item waves-effect waves-light">
           <a
-            class="nav-link active"
+            className="nav-link active"
             data-bs-toggle="tab"
             href="#home-1"
             role="tab"
           >
-            <span class="d-block d-sm-none">
-              <i class="fas fa-home"></i>
+            <span className="d-block d-sm-none">
+              <i className="fas fa-home"></i>
             </span>
-            <span class="d-none d-sm-block">Home</span>
+            <span className="d-none d-sm-block">Home</span>
           </a>
         </li>
-        <li class="nav-item waves-effect waves-light">
-          <a class="nav-link" data-bs-toggle="tab" href="#profile-1" role="tab">
-            <span class="d-block d-sm-none">
-              <i class="far fa-user"></i>
-            </span>
-            <span class="d-none d-sm-block">Profile</span>
-          </a>
-        </li>
-        <li class="nav-item waves-effect waves-light">
+        <li className="nav-item waves-effect waves-light">
           <a
-            class="nav-link"
+            className="nav-link"
+            data-bs-toggle="tab"
+            href="#profile-1"
+            role="tab"
+          >
+            <span className="d-block d-sm-none">
+              <i className="far fa-user"></i>
+            </span>
+            <span className="d-none d-sm-block">Profile</span>
+          </a>
+        </li>
+        <li className="nav-item waves-effect waves-light">
+          <a
+            className="nav-link"
             data-bs-toggle="tab"
             href="#messages-1"
             role="tab"
           >
-            <span class="d-block d-sm-none">
-              <i class="far fa-envelope"></i>
+            <span className="d-block d-sm-none">
+              <i className="far fa-envelope"></i>
             </span>
-            <span class="d-none d-sm-block">Messages</span>
+            <span className="d-none d-sm-block">Messages</span>
           </a>
         </li>
-        <li class="nav-item waves-effect waves-light">
+        <li className="nav-item waves-effect waves-light">
           <a
-            class="nav-link"
+            className="nav-link"
             data-bs-toggle="tab"
             href="#settings-1"
             role="tab"
           >
-            <span class="d-block d-sm-none">
-              <i class="fas fa-cog"></i>
+            <span className="d-block d-sm-none">
+              <i className="fas fa-cog"></i>
             </span>
-            <span class="d-none d-sm-block">Settings</span>
+            <span className="d-none d-sm-block">Settings</span>
           </a>
         </li>
       </ul>
 
-      <div class="tab-content">
-        <div class="tab-pane active p-3" id="home-1" role="tabpanel">
-          <p class="mb-0">
+      <div className="tab-content">
+        <div className="tab-pane active p-3" id="home-1" role="tabpanel">
+          <p className="mb-0">
             Raw denim you probably haven't heard of them jean shorts Austin.
             Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache
             cliche tempor, williamsburg carles vegan helvetica. Reprehenderit
@@ -71,8 +76,8 @@ const Detail = () => {
             voluptate nisi qui.
           </p>
         </div>
-        <div class="tab-pane p-3" id="profile-1" role="tabpanel">
-          <p class="mb-0">
+        <div className="tab-pane p-3" id="profile-1" role="tabpanel">
+          <p className="mb-0">
             Food truck fixie locavore, accusamus mcsweeney's marfa nulla
             single-origin coffee squid. Exercitation +1 labore velit, blog
             sartorial PBR leggings next level wes anderson artisan four loko
@@ -83,8 +88,8 @@ const Detail = () => {
             labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit.
           </p>
         </div>
-        <div class="tab-pane p-3" id="messages-1" role="tabpanel">
-          <p class="mb-0">
+        <div className="tab-pane p-3" id="messages-1" role="tabpanel">
+          <p className="mb-0">
             Etsy mixtape wayfarers, ethical wes anderson tofu before they sold
             out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table
             readymade. Messenger bag gentrify pitchfork tattooed craft beer,
@@ -96,8 +101,8 @@ const Detail = () => {
             stumptown. Pitchfork sustainable tofu synth chambray yr.
           </p>
         </div>
-        <div class="tab-pane p-3" id="settings-1" role="tabpanel">
-          <p class="mb-0">
+        <div className="tab-pane p-3" id="settings-1" role="tabpanel">
+          <p className="mb-0">
             Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art
             party before they sold out master cleanse gluten-free squid
             scenester freegan cosby sweater. Fanny pack portland seitan DIY, art
