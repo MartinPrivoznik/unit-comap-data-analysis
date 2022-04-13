@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getProductNames } from "../../actions/actions";
+import Spinner from "./Spinner/Spinner";
 
 const ProductList = () => {
   const [dataApi, setData] = useState(null);
@@ -17,7 +18,7 @@ const ProductList = () => {
   const ProductCards = !dataApi ? (
     <p>
       <em>Loading...</em>
-      {/* Tady by to chtělo nějaký pěkný spinner :) https://www.w3schools.com/howto/howto_css_loader.asp */}
+      <Spinner></Spinner>
     </p>
   ) : (
     dummyData.map((el) => (
