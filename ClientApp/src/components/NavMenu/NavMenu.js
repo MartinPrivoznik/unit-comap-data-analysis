@@ -45,6 +45,11 @@ export default function NavMenu() {
                   Fetch data
                 </NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink tag={Link} className="text-dark" to="/overview">
+                  Overview
+                </NavLink>
+              </NavItem>
             </ul>
           </Collapse>
         </Container>
