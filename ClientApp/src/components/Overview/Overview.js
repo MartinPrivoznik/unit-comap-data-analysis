@@ -1,19 +1,14 @@
 import React, { useState } from "react";
-import DatePicker from "react-datepicker";
+import { addDays } from "date-fns";
+import { DateRangePicker } from "react-date-range";
 import C3Chart from "react-c3js";
 import "./Overview.css";
 import "c3/c3.css";
 
-import "react-datepicker/dist/react-datepicker.css";
+import "react-date-range/dist/styles.css"; // main css file
+import "react-date-range/dist/theme/default.css"; // theme css file
 
 const Overview = () => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-  const onChange = (dates) => {
-    const [start, end] = dates;
-    setStartDate(start);
-    setEndDate(end);
-  };
   const data = {
     columns: [
       ["PASS", 382],
@@ -24,6 +19,13 @@ const Overview = () => {
   const color = {
     pattern: ["#58db83", "#d95a6f"],
   };
+  const [date, setDate] = useState([
+    {
+      startDate: new Date(),
+      endDate: addDays(new Date(), -7),
+      key: "selection",
+    },
+  ]);
   return (
     <>
       <div className="row">
@@ -31,21 +33,24 @@ const Overview = () => {
       </div>
       <div>
         <h2>{`Chybovost produktu v datovém okně ${
-          startDate == null ? "" : startDate.toLocaleDateString()
-        } - ${endDate == null ? "" : endDate.toLocaleDateString()}`}</h2>
+          date.startDate == null ? "" : date.startDate.toLocaleDateString()
+        } - ${
+          date.endDate == null ? "" : date.endDate.toLocaleDateString()
+        }`}</h2>
         <div>
           <div>
             <C3Chart data={data} color={color} />
           </div>
           <div>
-            <DatePicker
-              selected={startDate}
-              onChange={onChange}
-              startDate={startDate}
-              endDate={endDate}
-              selectsRange
-              inline
+            <DateRangePicker
+              onChange={(item) => setDate([item.selection])}
+              showSelectionPreview={true}
+              moveRangeOnFirstSelection={false}
+              months={1}
+              ranges={date}
+              direction="horizontal"
             />
+            ;
           </div>
         </div>
       </div>
