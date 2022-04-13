@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 using UnIT_ComAp.BussinessLogic;
 using Microsoft.Extensions.DependencyInjection;
 using UnIT_ComAp.Models;
+using UnIT_ComAp.Models.DbModel;
 
 namespace UnIT_ComAp.Controllers
 {
     [ApiController]
-    [Route("weatherforecast")]
+    [Route("data")]
     public class DataController : ControllerBase
     {
         private readonly ReportsManager _reportsManager;
@@ -22,10 +23,9 @@ namespace UnIT_ComAp.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<bool>> Get()
+        public ActionResult<IEnumerable<TestHead>> Get()
         {
-            await _reportsManager.InsertDummy();
-            return Ok(true);
+            return Ok(_reportsManager.GetAllTestData());
         }
     }
 }

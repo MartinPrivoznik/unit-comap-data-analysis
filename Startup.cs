@@ -16,6 +16,11 @@ namespace UnIT_ComAp
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+            using (var db = new ReportsDatabase())
+            {
+                db.Database.EnsureCreated();
+            }
         }
 
         public IConfiguration Configuration { get; }

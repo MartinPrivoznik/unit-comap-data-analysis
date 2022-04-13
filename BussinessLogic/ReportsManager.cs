@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Xml.Serialization;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UnIT_ComAp.Data;
 using UnIT_ComAp.Models;
@@ -18,15 +20,26 @@ namespace UnIT_ComAp.BussinessLogic
             _reportsDatabase = reportsDatabase;
         }
 
-        public async Task InsertDummy()
+        public IEnumerable<TestHead> GetAllTestData()
         {
-            var newHead = await _reportsDatabase.AddAsync<TestHead>(new TestHead()
+            var head = _reportsDatabase.TestHeads.ToArray();
+
+            foreach (var hd in head)
             {
-                Id = Guid.NewGuid(),
-                DateSOfTesting = DateTime.Now,
-                ProductName = "xxx",
-                ProductSN = "xxx"
-            });
+                hd.TestGroups = _reportsDatabase.TestGroups.Where(grp => grp.HeadId == hd.Id).ToArray();
+
+                foreach (var grp in hd.TestGroups)
+                {
+                    grp.Tests = _reportsDatabase.Tests.Where(tst => tst.HeadId == hd.Id && tst.GroupId == grp.Id).ToArray();
+
+                    foreach (var tst in grp.Tests)
+                    {
+                        tst.TestOperations = _reportsDatabase.TestOperations.Where(op => op.HeadId == hd.Id && op.GroupId == grp.Id && op.TestId == tst.Id).ToArray();
+                    }
+                }
+            }
+
+            return head;
         }
 
         public async Task InsertSmart()
@@ -42,7 +55,7 @@ namespace UnIT_ComAp.BussinessLogic
 
                 var newHead = new TestHead()
                 {
-                    Id = Guid.NewGuid(),
+                    Id = 1,
                     DateSOfTesting = DateTime.Parse(testHead.Timestamp.Value),
                     ProductName = testHead.Product.Name,
                     ProductSN = testHead.Product.Sn,

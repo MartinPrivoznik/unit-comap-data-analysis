@@ -5,10 +5,10 @@ namespace UnIT_ComAp.Models.DbModel
 {
     public class TestOperation
     {
-        public int Id { get; set; }
-        public Guid HeadId { get; set; }
-        public int GroupId { get; set; }
-        public int TestId { get; set; }
+        public long Id { get; set; }
+        public long HeadId { get; set; }
+        public long GroupId { get; set; }
+        public long TestId { get; set; }
 
         public string Type { get; set; }
 
