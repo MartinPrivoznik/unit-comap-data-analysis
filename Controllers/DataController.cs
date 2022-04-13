@@ -12,7 +12,7 @@ using UnIT_ComAp.Models.DbModel;
 namespace UnIT_ComAp.Controllers
 {
     [ApiController]
-    [Route("data")]
+    [Route("api")]
     public class DataController : ControllerBase
     {
         private readonly ReportsManager _reportsManager;
@@ -29,12 +29,41 @@ namespace UnIT_ComAp.Controllers
             return true;
         }
 
-        [HttpGet]
+        [HttpGet("getAll")]
         public ActionResult<IEnumerable<TestHead>> Get()
         {
-            //_reportsManager.InsertData();
             return Ok(_reportsManager.GetAllTestData());
-            //return Ok(_reportsManager.GetAllTestData());
         }
+
+        [HttpGet("productNames")]
+        public ActionResult<IEnumerable<string>> GetProductNames()
+        {
+            try
+            {
+                return Ok(_reportsManager.GetProductNames());
+            }
+            catch(Exception ex)
+            {
+                return Conflict(ex);
+            }
+        }
+
+        [HttpGet("lastTestForEach")]
+        public ActionResult<IEnumerable<Test>> GetLastTestForEachDevice()
+        {
+            try
+            {
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return Conflict(ex);
+            }
+        }
+
+        //Data pro jednotlive produkty - posledni test pro sn 
+        //Prumerny cas
+        //Vsechny testy pro produkt podle nazvu a sn
+        //vysledky testu v urcenem obdobi
     }
 }

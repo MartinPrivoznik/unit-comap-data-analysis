@@ -42,6 +42,14 @@ namespace UnIT_ComAp.BussinessLogic
             return head;
         }
 
+        public IEnumerable<string> GetProductNames()
+        {
+            return _reportsDatabase.TestHeads
+                .ToList()
+                .GroupBy(head => head.ProductName)
+                .Select(head => head.FirstOrDefault().ProductName);
+        }
+
         public Task InsertData()
         {
             return Task.Run(() =>
