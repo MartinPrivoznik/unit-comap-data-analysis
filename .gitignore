@@ -234,3 +234,6 @@ _Pvt_Extensions
 
 #VS code temporary files
 .vscode/
+
+
+.DS_Store
