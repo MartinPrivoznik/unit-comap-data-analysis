@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { getProductNames } from "../../actions/actions";
-import Spinner from "../Spinner/Spinner";
+import React, { useEffect, useState } from 'react';
+import { getProductNames } from '../../actions/actions';
+import Spinner from '../Spinner/Spinner';
 
 const ProductList = () => {
   const [dataApi, setData] = useState(null);
@@ -14,7 +14,7 @@ const ProductList = () => {
     getData();
   }, []);
 
-  const dummyData = ["IL4 PG24A", "IL4 PG24C", "IL4 PG24D"];
+  const dummyData = ['IL4 PG24A', 'IL4 PG24C', 'IL4 PG24D'];
   const ProductCards = !dataApi ? (
     <p>
       <em>Loading...</em>
