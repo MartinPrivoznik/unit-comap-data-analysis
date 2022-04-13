@@ -1,12 +1,12 @@
-import React from 'react';
-import { Route } from 'react-router';
-import Layout from './Layout';
-import Home from './Home';
-import FetchData from './FetchData/FetchData';
-import Overview from './Overview/Overview';
-import ProductList from './ProductList/ProductList';
-import Detail from './Detail/Detail';
-import './App.css';
+import React from "react";
+import { Route } from "react-router";
+import Layout from "./Layout";
+import Home from "./Home";
+import FetchData from "./FetchData/FetchData";
+import Overview from "./Overview/Overview";
+import ProductList from "./ProductList/ProductList";
+import Detail from "./Detail/Detail";
+import "./App.css";
 
 const App = () => {
   return (

@@ -13,7 +13,6 @@ code {
   border-color: #1861ac;
 }
 
-
 :root {
   --bs-blue: #7a6fbe;
   --bs-indigo: #564ab1;
@@ -16518,3 +16517,7 @@ div.dataTables_wrapper div.dataTables_filter input {
   top: 60px;
 }
 /*# sourceMappingURL=app.min.css.map */
+
+.container {
+  margin-top: 100px;
+}
