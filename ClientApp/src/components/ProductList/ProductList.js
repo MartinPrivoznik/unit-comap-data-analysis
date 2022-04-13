@@ -21,9 +21,8 @@ const ProductList = () => {
     </p>
   ) : (
     dummyData.map((el) => (
-      <div className="col-xl-3 col-sm-6">
-        {console.log(dataApi)}
-        <a href="/overview" key={el.name}>
+      <div className="col-xl-3 col-sm-6" key={el}>
+        <a href="/overview">
           <div className="card mini-stat bg-primary">
             <div className="card-body mini-stat-img">
               <div className="mini-stat-icon">
@@ -33,7 +32,7 @@ const ProductList = () => {
                 <h6 className="text-uppercase mb-3 font-size-16 text-white">
                   Orders
                 </h6>
-                <h2 className="mb-4 text-white">{el.name}</h2>
+                <h2 className="mb-4 text-white">{el}</h2>
               </div>
             </div>
           </div>
