@@ -1,0 +1,26 @@
+.errorCard {
+  background-color: white;
+  padding: 20px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+.errorCard .rdrDefinedRangesWrapper {
+  width: auto !important;
+}
+.c3 text {
+  fill: white !important;
+}
+
+.c3 .c3-legend-item text {
+  fill: black !important;
+}
+.c3 .c3-bars {
+  border: 1px solid black !important;
+}
+.errorCard label {
+  padding: 10px;
+}
+.errorCard input {
+  margin: 10px;
+}
