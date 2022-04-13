@@ -5,10 +5,35 @@ const Detail = () => {
   return (
     <>
       <div className="row">
-        <h1>IL4 PG24A</h1>
+        <h4>IL4 PG24A</h4>
+        <h2>S/N: 21510A00</h2>
       </div>
       <div className="row">
-        <h2>Chybovost produktu</h2>
+        <div className="col-md-4">
+          <h4>Device</h4>
+          <p>
+            Name: ....
+            <br />
+            SF-CODE: ... <br />
+            Family" .... <br />
+          </p>
+        </div>
+        <div className="col-md-4">
+          <h4>Test details</h4>
+          <p>
+            Test total time: ....
+            <br />
+            Tester: ... <br />
+            ...." .... <br />
+          </p>
+        </div>
+        <div className="col-md-4">
+          <h4>Components</h4>
+          <ul>
+            <li>Jmeno - Verze</li>
+            <li>Jmeno - Verze</li>
+          </ul>
+        </div>
       </div>
       <ul className="nav nav-pills nav-justified" role="tablist">
         <li className="nav-item waves-effect waves-light">
