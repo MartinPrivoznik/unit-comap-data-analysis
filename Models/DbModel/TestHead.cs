@@ -11,6 +11,10 @@ namespace UnIT_ComAp.Models.DbModel
         public string ProductSN { get; set; }
         public bool Success { get; set; }
         public DateTime DateSOfTesting { get; set; }
+        public float TestTime { get; set; }
+        public string TesterInfo { get; set; }
+        public string UserName { get; set; }
+        public string IniSecurity { get; set; }
 
         [NotMapped]
         public IEnumerable<TestGroup> TestGroups { get; set; }
