@@ -21,12 +21,8 @@ namespace UnIT_ComAp.BussinessLogic
             { 
                 Id = 0, 
                 DateSOfTesting = DateTime.Now,
-                Result = new Result() { Success = true },
-                Product = new Product()
-                {
-                    Name = "xxx",
-                    SN = "xxx"
-                }
+                ProductName = "xxx",
+                ProductSN = "xxx"
             });
         }
     }

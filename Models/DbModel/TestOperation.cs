@@ -4,11 +4,9 @@ namespace UnIT_ComAp.Models.DbModel
 {
     public class TestOperation
     {
-        [Key]
+        public int Id { get; set; }
         public int HeadId { get; set; }
-        [Key]
         public int GroupId { get; set; }
-        [Key]
         public string TestId { get; set; }
 
         public string Type { get; set; }

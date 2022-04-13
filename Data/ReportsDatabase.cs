@@ -21,8 +21,14 @@ namespace UnIT_ComAp.Data
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<TestHead>().ToTable("Heads");
+            modelBuilder.Entity<TestHead>().HasKey(c => new
+            {
+                c.Id,
+            });
+
             // Map table names
-            modelBuilder.Entity<Test>().ToTable("Reports");
+            modelBuilder.Entity<Test>().ToTable("Tests");
             modelBuilder.Entity<Test>().HasKey(c => new
             {
                 c.HeadId,
@@ -30,26 +36,21 @@ namespace UnIT_ComAp.Data
                 c.GroupId
             });
 
-            modelBuilder.Entity<TestGroup>().ToTable("Reports");
+            modelBuilder.Entity<TestGroup>().ToTable("Groups");
             modelBuilder.Entity<TestGroup>().HasKey(c => new
             {
                 c.HeadId,
                 c.Id,
             });
 
-            modelBuilder.Entity<TestHead>().ToTable("Reports");
-            modelBuilder.Entity<TestHead>().HasKey(c => new
-            {
-                c.Id,
-            });
-
-            modelBuilder.Entity<TestOperation>().ToTable("Reports");
+            modelBuilder.Entity<TestOperation>().ToTable("Operations");
             modelBuilder.Entity<TestOperation>().HasKey(c => new
             {
                 c.HeadId,
                 c.TestId,
                 c.GroupId
             });
+
 
             base.OnModelCreating(modelBuilder);
         }
