@@ -47,7 +47,7 @@ namespace UnIT_ComAp.BussinessLogic
             return _reportsDatabase.TestHeads
                 .ToList()
                 .GroupBy(head => head.ProductName)
-                .Select(head => new { name = head.FirstOrDefault().ProductName, sn = head.FirstOrDefault().ProductSN });
+                .Select(head =>  head.FirstOrDefault().ProductName);
         }
 
 
@@ -63,10 +63,12 @@ namespace UnIT_ComAp.BussinessLogic
 
         public IEnumerable<TestGroup> GetAllTestGroupsForDevice(string deviceName, string deviceSn)
         {
-            return _reportsDatabase.TestHeads
+            var head = _reportsDatabase.TestHeads
                 .Where(head => head.ProductName == deviceName && head.ProductSN == deviceSn)
-                .FirstOrDefault()
-                .TestGroups;
+                .FirstOrDefault();
+
+            return _reportsDatabase.TestGroups
+                .Where(grp => grp.HeadId == head.Id);
         }
 
         public Task InsertData()
