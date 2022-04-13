@@ -14,17 +14,13 @@ const ProductList = () => {
     getData();
   }, []);
 
-  const dummyData = ['IL4 PG24A', 'IL4 PG24C', 'IL4 PG24D'];
   const ProductCards = !dataApi ? (
-    <p>
-      <em>Loading...</em>
-      <Spinner></Spinner>
-    </p>
+    <Spinner></Spinner>
   ) : (
-    dummyData.map((el) => (
+    dataApi.map((el) => (
       <div className="col-xl-3 col-sm-6" key={el}>
-        <a href="/overview">
-          <div className="card mini-stat bg-primary">
+        <a href={"/overview/" + el}>
+          < div className="card mini-stat bg-primary">
             <div className="card-body mini-stat-img">
               <div className="mini-stat-icon">
                 <i className="mdi mdi-cube-outline float-end"></i>
@@ -37,8 +33,8 @@ const ProductList = () => {
               </div>
             </div>
           </div>
-        </a>
-      </div>
+        </a >
+      </div >
     ))
   );
   return (

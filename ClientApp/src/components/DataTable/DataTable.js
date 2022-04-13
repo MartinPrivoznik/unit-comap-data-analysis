@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { getLastTestsBySn } from "../../actions/actions";
 import "./DataTable.css";
 
-const fuck = "PASS";
+const phrase = "PASS";
 
-const DataTable = () => {
+const DataTable = (dataApi) => {
   return (
     <>
       <div className="row">
@@ -26,33 +27,29 @@ const DataTable = () => {
               >
                 <thead>
                   <tr>
-                    <th>S/N</th>
-                    <th>Doba trvání</th>
-                    <th>Název testovací aplikace</th>
-                    <th>Verze aplikace</th>
-                    <th>Uživatel</th>
-                    <th>Timestemp</th>
-                    <th>INIS</th>
-                    <th>Výsledek testu</th>
+                    {Object.keys(dataApi.dataApi[0]).map((e) => (
+                      e == "testGroups" ? null : <th key={e} >{e}</th>
+                    ))}
                   </tr>
                 </thead>
-
                 <tbody>
-                  <tr>
-                    <td>21510A00</td>
-                    <td>420 s</td>
-                    <td>UniTesterApp</td>
-                    <td>1.0.0.20</td>
-                    <td>9</td>
-                    <td>21. 6. 2020 8:00</td>
-                    <td>ISISIIIS</td>
-                    <td>
-                      PASS{" "}
-                      <span
-                        className={fuck == "PASS" ? "bgGreen" : "bgRed"}
-                      ></span>
-                    </td>
-                  </tr>
+                  {dataApi.dataApi.map((product) => (
+                    <tr key={product.id}>
+                      <td>{product.id}</td>
+                      <td>{product.productName}</td>
+                      <td>{product.productSN}</td>
+                      <td>
+                        <span
+                          className={product.success ? "bgGreen" : "bgRed"}
+                        ></span>
+                      </td>
+                      <td>{product.dateSOfTesting}</td>
+                      <td>{product.testTime}</td>
+                      <td>{product.testerInfo}</td>
+                      <td>{product.userName}</td>
+                      <td>{product.iniSecurity}</td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>

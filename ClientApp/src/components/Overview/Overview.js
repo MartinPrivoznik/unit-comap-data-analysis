@@ -6,16 +6,19 @@ import DataTable from "../DataTable/DataTable";
 import "./Overview.css";
 import "c3/c3.css";
 import { getLastTestsBySn } from "../../actions/actions";
+import Spinner from "../Spinner/Spinner";
 
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
+import { useParams } from "react-router-dom";
 
-const Overview = (sn) => {
+const Overview = () => {
+  var { id } = useParams();
   const [dataApi, setData] = useState(null);
 
   useEffect(() => {
     const getData = async () => {
-      const data = await getLastTestsBySn("IL PG24A");
+      const data = await getLastTestsBySn(id);
       setData(data);
     };
 
@@ -63,11 +66,21 @@ const Overview = (sn) => {
       key: "selection",
     },
   ]);
+
+  const dataTable = dataApi == null ? (
+    <Spinner></Spinner>
+  ) : (
+    <div className="row">
+      <DataTable dataApi={dataApi} ></DataTable>
+    </div>
+  )
+
+
   return (
     <>
       <div className="row">
         <div className="col-md-6">
-          <h1>IL4 PG24A</h1>
+          <h1>{id}</h1>
           <h4>Vybere si časové okno, ze kterého chcete použít data</h4>
         </div>
         <div className="col-md-6">
@@ -87,9 +100,7 @@ const Overview = (sn) => {
         <div className="col-md-6">
           <div className="errorCard">
             <h2>Chybovost produktu</h2>
-            <div>
-              <C3Chart data={statsData} color={donutColor} />
-            </div>
+            <C3Chart data={statsData} color={donutColor} />
             <p>
               Vadných produktů: <b>{failCount}</b> <br />
               Bezchybných produktů: <b>{passCount}</b>{" "}
@@ -113,9 +124,7 @@ const Overview = (sn) => {
           </div>
         </div>
       </div>
-      <div className="row">
-        <DataTable></DataTable>
-      </div>
+      {dataTable}
     </>
   );
 };
