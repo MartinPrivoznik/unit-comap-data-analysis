@@ -41,8 +41,13 @@ export default function NavMenu() {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/fetch-data">
-                  Fetch data
+                <NavLink tag={Link} className="text-dark" to="/product">
+                  Product
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={Link} className="text-dark" to="/products">
+                  Products
                 </NavLink>
               </NavItem>
               <NavItem>
