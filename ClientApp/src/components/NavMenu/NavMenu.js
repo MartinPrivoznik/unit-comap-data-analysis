@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Collapse,
   Container,
@@ -7,9 +7,9 @@ import {
   NavbarToggler,
   NavItem,
   NavLink,
-} from "reactstrap";
-import { Link } from "react-router-dom";
-import "./NavMenu.css";
+} from 'reactstrap';
+import { Link } from 'react-router-dom';
+import './NavMenu.css';
 
 export default function NavMenu() {
   const [collapsed, setCollapsed] = useState(false);
@@ -48,6 +48,16 @@ export default function NavMenu() {
               <NavItem>
                 <NavLink tag={Link} className="text-dark" to="/overview">
                   Overview
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={Link} className="text-dark" to="/product-list">
+                  Product List
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={Link} className="text-dark" to="/detail">
+                  Detail
                 </NavLink>
               </NavItem>
             </ul>
