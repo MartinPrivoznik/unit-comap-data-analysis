@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Detail = () => {
-  const [data, setData] = useState([]);
+  //const [data, setData] = useState([]);
   return (
     <>
       <div className="row">

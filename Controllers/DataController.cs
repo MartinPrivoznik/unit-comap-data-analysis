@@ -74,7 +74,20 @@ namespace UnIT_ComAp.Controllers
             }
         }
 
-        //Data pro jednotlive produkty - posledni test pro sn 
+        [HttpGet("allTestsForGroup")]
+        public ActionResult<IEnumerable<TestGroup>> GetTestsForGroup(string deviceName, string deviceSn, long groupId)
+        {
+            try
+            {
+                return Ok(_reportsManager.GetAllTestsForGroup(deviceName, deviceSn, groupId));
+            }
+            catch (Exception ex)
+            {
+                return Conflict(ex);
+            }
+        }
+
+
         //Prumerny cas
         //Vsechny testy pro produkt podle nazvu a sn
         //vysledky testu v urcenem obdobi
