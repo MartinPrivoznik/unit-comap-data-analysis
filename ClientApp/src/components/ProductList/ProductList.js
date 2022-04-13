@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getProductNames } from "../../actions/actions";
-import Spinner from "./Spinner/Spinner";
+import Spinner from "../Spinner/Spinner";
 
 const ProductList = () => {
   const [dataApi, setData] = useState(null);
