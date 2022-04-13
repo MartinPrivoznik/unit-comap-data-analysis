@@ -1,4 +1,7 @@
 import React from "react";
+import "./DataTable.css";
+
+const fuck = "PASS";
 
 const DataTable = () => {
   return (
@@ -43,7 +46,12 @@ const DataTable = () => {
                     <td>9</td>
                     <td>21. 6. 2020 8:00</td>
                     <td>ISISIIIS</td>
-                    <td>PASS</td>
+                    <td>
+                      PASS{" "}
+                      <span
+                        className={fuck == "PASS" ? "bgGreen" : "bgRed"}
+                      ></span>
+                    </td>
                   </tr>
                 </tbody>
               </table>

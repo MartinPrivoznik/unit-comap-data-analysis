@@ -1,55 +1,70 @@
-import React, { useState } from 'react';
-import { addDays } from 'date-fns';
-import { DateRangePicker } from 'react-date-range';
-import C3Chart from 'react-c3js';
-import DataTable from '../DataTable/DataTable';
-import './Overview.css';
-import 'c3/c3.css';
+import React, { useState } from "react";
+import { addDays } from "date-fns";
+import { DateRangePicker } from "react-date-range";
+import C3Chart from "react-c3js";
+import DataTable from "../DataTable/DataTable";
+import "./Overview.css";
+import "c3/c3.css";
 
-import 'react-date-range/dist/styles.css'; // main css file
-import 'react-date-range/dist/theme/default.css'; // theme css file
+import "react-date-range/dist/styles.css"; // main css file
+import "react-date-range/dist/theme/default.css"; // theme css file
 
 const Overview = () => {
   const statsData = {
     columns: [
-      ['PASS', 382],
-      ['FAIL', 22],
+      ["PASS", 382],
+      ["FAIL", 22],
     ],
-    type: 'donut',
+    type: "donut",
   };
   const timeData = {
     columns: [
-      ['IL PG24A', 7.6],
-      ['IL PG24B', 9.4],
-      ['IL PG24C', 6.9],
+      ["IL PG24A", 7.6],
+      ["IL PG24B", 9.4],
+      ["IL PG24C", 6.9],
     ],
-    type: 'bar',
+    type: "bar",
   };
   const donutColor = {
-    pattern: ['#58db83', '#d95a6f'],
+    pattern: ["#58db83", "#d95a6f"],
   };
   const timeColor = {
     pattern: [
-      '#3d91ff',
-      '#adadad',
-      '#b7b7b7',
-      '#c1c1c1',
-      '#cccccc',
-      '#d6d6d6',
-      '#e0e0e0',
+      "#3d91ff",
+      "#adadad",
+      "#b7b7b7",
+      "#c1c1c1",
+      "#cccccc",
+      "#d6d6d6",
+      "#e0e0e0",
     ],
   };
   const [date, setDate] = useState([
     {
       startDate: new Date(),
       endDate: addDays(new Date(), -7),
-      key: 'selection',
+      key: "selection",
     },
   ]);
   return (
     <>
       <div className="row">
-        <h1>IL4 PG24A</h1>
+        <div className="col-md-6">
+          <h1>IL4 PG24A</h1>
+          <h4>Vybere si časové okno, ze kterého chcete použít data</h4>
+        </div>
+        <div className="col-md-6">
+          <div className="d-flex justify-content-center">
+            <DateRangePicker
+              onChange={(item) => setDate([item.selection])}
+              showSelectionPreview={true}
+              moveRangeOnFirstSelection={false}
+              months={1}
+              ranges={date}
+              direction="horizontal"
+            />
+          </div>
+        </div>
       </div>
       <div className="row">
         <div className="col-md-6">
@@ -58,16 +73,10 @@ const Overview = () => {
             <div>
               <C3Chart data={statsData} color={donutColor} />
             </div>
-            <div className="d-flex justify-content-center">
-              <DateRangePicker
-                onChange={(item) => setDate([item.selection])}
-                showSelectionPreview={true}
-                moveRangeOnFirstSelection={false}
-                months={1}
-                ranges={date}
-                direction="horizontal"
-              />
-            </div>
+            <p>
+              Vadných produktů: <b>22</b> <br />
+              Bezchybných produktů: <b>382</b>{" "}
+            </p>
           </div>
         </div>
         <div className="col-md-6">
