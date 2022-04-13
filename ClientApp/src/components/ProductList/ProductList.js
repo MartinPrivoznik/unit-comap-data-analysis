@@ -13,17 +13,17 @@ const ProductList = () => {
     getData();
   }, []);
 
+  const dummyData = ["IL4 PG24A", "IL4 PG24C", "IL4 PG24D"];
   const ProductCards = !dataApi ? (
     <p>
       <em>Loading...</em>
       {/* Tady by to chtělo nějaký pěkný spinner :) https://www.w3schools.com/howto/howto_css_loader.asp */}
     </p>
   ) : (
-    dataApi.map((el) => (
+    dummyData.map((el) => (
       <div className="col-xl-3 col-sm-6">
+        {console.log(dataApi)}
         <a href="/overview" key={el.name}>
-          {console.log(dataApi)}
-
           <div className="card mini-stat bg-primary">
             <div className="card-body mini-stat-img">
               <div className="mini-stat-icon">
