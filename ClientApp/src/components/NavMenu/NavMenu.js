@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Collapse,
   Container,
@@ -7,9 +7,9 @@ import {
   NavbarToggler,
   NavItem,
   NavLink,
-} from 'reactstrap';
-import { Link } from 'react-router-dom';
-import './NavMenu.css';
+} from "reactstrap";
+import { Link } from "react-router-dom";
+import "./NavMenu.css";
 
 export default function NavMenu() {
   const [collapsed, setCollapsed] = useState(false);
@@ -19,51 +19,30 @@ export default function NavMenu() {
   };
 
   return (
-    <header>
-      <Navbar
-        className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3"
-        light
-      >
-        <Container>
-          <NavbarBrand tag={Link} to="/">
-            UnIT_ComAp
-          </NavbarBrand>
-          <NavbarToggler onClick={toggleNavbar} className="mr-2" />
-          <Collapse
-            className="d-sm-inline-flex flex-sm-row-reverse"
-            isOpen={!collapsed}
-            navbar
-          >
-            <ul className="navbar-nav flex-grow">
-              <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/">
-                  Home
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/fetch-data">
-                  Fetch data
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/overview">
-                  Overview
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/product-list">
-                  Product List
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/detail">
-                  Detail
-                </NavLink>
-              </NavItem>
-            </ul>
-          </Collapse>
-        </Container>
-      </Navbar>
+    <header id="page-topbar">
+      <div className="navbar-header">
+        <div className="d-flex">
+          <div className="navbar-brand-box">
+            <a href="/" className="logo logo-dark">
+              <span className="logo-sm">
+                <img src="images/logoComApp.png" alt="" height="22" />
+              </span>
+              <span className="logo-lg">
+                <img src="images/logoComApp.png" alt="" height="38" />
+              </span>
+            </a>
+
+            <a href="/" className="logo logo-light">
+              <span className="logo-sm">
+                <img src="images/logoComApp.png" alt="" height="22" />
+              </span>
+              <span className="logo-lg">
+                <img src="images/logoComApp.png" alt="" height="18" />
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
     </header>
   );
 }
