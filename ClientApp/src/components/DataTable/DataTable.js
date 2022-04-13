@@ -35,7 +35,7 @@ const DataTable = (dataApi) => {
                 <tbody>
                   {dataApi.dataApi.map((product) => (
                     <tr key={product.id}>
-                      <td>{product.id}</td>
+                      <td><a href={"/detail/" + id}>{product.id}</a></td>
                       <td>{product.productName}</td>
                       <td>{product.productSN}</td>
                       <td>

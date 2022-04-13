@@ -13,9 +13,10 @@ const App = () => {
     <Layout>
       <Route exact path="/" component={Home} />
       <Route path="/products" component={Products} />
+      <Route exact path="/overview" component={Home} />
       <Route exact path="/overview/:id?" component={Overview} />
       <Route path="/product-list" component={ProductList} />
-      <Route path="/detail" component={Detail} />
+      <Route path="/detail/:id?" component={Detail} />
     </Layout>
   );
 };
