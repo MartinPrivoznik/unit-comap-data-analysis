@@ -10,20 +10,20 @@ using UnIT_ComAp.Models;
 namespace UnIT_ComAp.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("weatherforecast")]
     public class DataController : ControllerBase
     {
-        private readonly WeatherManager _weatherManager;
+        private readonly ReportsManager _reportsManager;
 
-        public DataController(WeatherManager weatherManager)
+        public DataController(ReportsManager reportsManager)
         {
-            _weatherManager = weatherManager;
+            _reportsManager = reportsManager;
         }
 
         [HttpGet]
         public async Task<ActionResult<bool>> Get()
         {
-            await _weatherManager.InsertWeather();
+            await _reportsManager.InsertDummy();
             return Ok(true);
         }
     }
