@@ -8,6 +8,7 @@ using UnIT_ComAp.Data;
 using UnIT_ComAp.Models;
 using UnIT_ComAp.Models.DbModel;
 using UnIT_ComAp.Models.Schemes;
+using Test = UnIT_ComAp.Models.DbModel.Test;
 
 namespace UnIT_ComAp.BussinessLogic
 {
@@ -69,6 +70,28 @@ namespace UnIT_ComAp.BussinessLogic
 
             return _reportsDatabase.TestGroups
                 .Where(grp => grp.HeadId == head.Id);
+        }
+
+        public IEnumerable<Test> GetAllTestsForGroup(string deviceName, string deviceSn, long groupId)
+        {
+            var head = _reportsDatabase.TestHeads
+                .Where(head => head.ProductName == deviceName && head.ProductSN == deviceSn)
+                .FirstOrDefault();
+
+            var group = _reportsDatabase.TestGroups
+                .Where(grp => grp.HeadId == head.Id && grp.Id == groupId)
+                .FirstOrDefault();
+
+            var tests = _reportsDatabase.Tests
+                .Where(tst => tst.HeadId == head.Id && tst.GroupId == group.Id)
+                .ToList();
+
+            foreach(var tst in tests)
+            {
+                tst.TestOperations = _reportsDatabase.TestOperations.Where(op => op.TestId == tst.Id && op.HeadId == head.Id && op.GroupId == group.Id);
+            }
+
+            return tests;
         }
 
         public Task InsertData()
