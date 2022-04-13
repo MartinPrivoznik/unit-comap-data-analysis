@@ -1,26 +1,46 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import { getProductNames } from "../../actions/actions";
 
 const ProductList = () => {
-  const productNames = ['a', 'b'];
-  const ProductCards = productNames.map((name) => (
-    <a href="/overview" key={name}>
+  const [dataApi, setData] = useState(null);
+
+  useEffect(() => {
+    const getData = async () => {
+      const data = await getProductNames();
+      setData(data);
+    };
+
+    getData();
+  }, []);
+
+  const dummyData = ["IL4 PG24A", "IL4 PG24C", "IL4 PG24D"];
+  const ProductCards = !dataApi ? (
+    <p>
+      <em>Loading...</em>
+      {/* Tady by to chtělo nějaký pěkný spinner :) https://www.w3schools.com/howto/howto_css_loader.asp */}
+    </p>
+  ) : (
+    dummyData.map((el) => (
       <div className="col-xl-3 col-sm-6">
-        <div className="card mini-stat bg-primary">
-          <div className="card-body mini-stat-img">
-            <div className="mini-stat-icon">
-              <i className="mdi mdi-cube-outline float-end"></i>
-            </div>
-            <div className="text-white">
-              <h6 className="text-uppercase mb-3 font-size-16 text-white">
-                Orders
-              </h6>
-              <h2 className="mb-4 text-white">{name}</h2>
+        {console.log(dataApi)}
+        <a href="/overview" key={el.name}>
+          <div className="card mini-stat bg-primary">
+            <div className="card-body mini-stat-img">
+              <div className="mini-stat-icon">
+                <i className="mdi mdi-cube-outline float-end"></i>
+              </div>
+              <div className="text-white">
+                <h6 className="text-uppercase mb-3 font-size-16 text-white">
+                  Orders
+                </h6>
+                <h2 className="mb-4 text-white">{el.name}</h2>
+              </div>
             </div>
           </div>
-        </div>
+        </a>
       </div>
-    </a>
-  ));
+    ))
+  );
   return (
     <>
       <div className="row">{ProductCards}</div>

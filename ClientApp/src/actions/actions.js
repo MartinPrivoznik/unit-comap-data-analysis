@@ -2,7 +2,7 @@ import { get } from "../services/requestHelpers";
 
 let errmsg = "Error, see console for more";
 
-export const getProducts = async () => {
+export const getAllProducts = async () => {
   try {
     const response = await get("api/getAll");
     return response.data;
@@ -22,9 +22,9 @@ export const getProductTestsByDate = async (date) => {
   }
 };
 
-export const getProductTestsBySN = async (sn) => {
+export const getLastTestsBySn = async (deviceName) => {
   try {
-    const response = await get("products?sn=" + sn);
+    const response = await get("api/lastTestsBySn?deviceName=" + deviceName);
     return response.data;
   } catch (err) {
     console.log(err);
@@ -32,9 +32,9 @@ export const getProductTestsBySN = async (sn) => {
   }
 };
 
-export const getProductByDeviceName = async (deviceName) => {
+export const getTestGroupsForDevice = async (deviceName, deviceSn) => {
   try {
-    const response = await get("api/lastTestForEach?deviceName=" + deviceName);
+    const response = await get("api/allTestGroupsForDevice?deviceName=" + deviceName + "&deviceSn=" + deviceSn);
     return response.data;
   } catch (err) {
     console.log(err);
@@ -42,7 +42,7 @@ export const getProductByDeviceName = async (deviceName) => {
   }
 };
 
-export const getProductNames = async (deviceName) => {
+export const getProductNames = async () => {
   try {
     const response = await get("api/productNames");
     return response.data;
