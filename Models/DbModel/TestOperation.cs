@@ -16,8 +16,10 @@ namespace UnIT_ComAp.Models.DbModel
         public string Name { get; set; }
         public string Value { get; set; }
         public string Result { get; set; }
+        public string Expected { get; set; }
         public string ExpectedHigh { get; set; }
         public string ExpectedLow { get; set; }
+        public string Side { get; set; }
 
         //Type == info
         public string Text { get; set; }

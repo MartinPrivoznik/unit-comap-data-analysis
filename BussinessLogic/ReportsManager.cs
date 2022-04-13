@@ -50,13 +50,24 @@ namespace UnIT_ComAp.BussinessLogic
                 .Select(head => head.FirstOrDefault().ProductName);
         }
 
+
+        public IEnumerable<TestHead> GetLastTestsBySn(string deviceName)
+        {
+            return _reportsDatabase.TestHeads
+                .Where(head => head.ProductName == deviceName)
+                .OrderByDescending(head => head.DateSOfTesting)
+                .ToList()
+                .GroupBy(head => head.ProductSN)
+                .Select(head => head.FirstOrDefault());
+                
+                
+        }
+
         public Task InsertData()
         {
             return Task.Run(() =>
             {
-                var files = Directory.GetFiles(@"C:\Development\unit-comap-data-analysis\reports\PG24A\");
-
-                
+                var files = Directory.GetFiles(@"C:\Development\unit-comap-data-analysis\reports\PG24D\");
 
                 foreach (var fileName in files)
                 {
@@ -72,7 +83,11 @@ namespace UnIT_ComAp.BussinessLogic
                             ProductName = report.Head.Product.Name,
                             ProductSN = report.Head.Product.Sfidstring,
                             DateSOfTesting = DateTime.Parse(report.Head.Timestamp.Value),
-                            Success = report.Head.Result.Value == "PASS"
+                            Success = report.Head.Result.Value == "PASS",
+                            TestTime = float.Parse(report.Head.Testtotaltime.Value),
+                            TesterInfo = report.Head.Testerinfo.Value,
+                            IniSecurity = report.Head.Inisecurity.Value,
+                            UserName = report.Head.Username.Value
                         };
 
                         _reportsDatabase.Add(head);
@@ -120,7 +135,9 @@ namespace UnIT_ComAp.BussinessLogic
                                         Value = op.Value,
                                         ExpectedLow = op.Expectedlow,
                                         ExpectedHigh = op.Expectedhigh,
-                                        Result = op.Result
+                                        Expected = op.Expected,
+                                        Result = op.Result,
+                                        Side = op.Side
                                     };
 
                                     k++;

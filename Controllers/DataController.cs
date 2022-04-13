@@ -48,12 +48,12 @@ namespace UnIT_ComAp.Controllers
             }
         }
 
-        [HttpGet("lastTestForEach")]
-        public ActionResult<IEnumerable<Test>> GetLastTestForEachDevice()
+        [HttpGet("lastTestsBySn")]
+        public ActionResult<IEnumerable<TestHead>> GetLastTestsBySn(string deviceName)
         {
             try
             {
-                return Ok();
+                return Ok(_reportsManager.GetLastTestsBySn(deviceName));
             }
             catch (Exception ex)
             {
