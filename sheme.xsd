@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="value" nillable="true">
+    <xs:complexType>
+      <xs:simpleContent msdata:ColumnName="value_Text" msdata:Ordinal="1">
+        <xs:extension base="xs:string">
+          <xs:attribute name="name" type="xs:string" />
+          <xs:attribute name="type" type="xs:string" />
+          <xs:attribute name="value" type="xs:string" />
+          <xs:attribute name="extended-info" type="xs:string" />
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="test_report">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="id_chip_spc" type="xs:string" minOccurs="0" msdata:Ordinal="1" />
+        <xs:element name="id_chip_icd" type="xs:string" minOccurs="0" msdata:Ordinal="2" />
+        <xs:element name="head" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="product" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="name" type="xs:string" />
+                  <xs:attribute name="code" type="xs:string" />
+                  <xs:attribute name="sf-code" type="xs:string" />
+                  <xs:attribute name="family" type="xs:string" />
+                  <xs:attribute name="sn" type="xs:string" />
+                  <xs:attribute name="sf-sn" type="xs:string" />
+                  <xs:attribute name="sf-id-string" type="xs:string" />
+                  <xs:attribute name="hw-version" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="result" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="value" type="xs:string" />
+                  <xs:attribute name="fail-test-name" type="xs:string" />
+                  <xs:attribute name="fail-group-name" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="upload-state" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="value" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="test-total-time" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="value" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="security-check" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="value" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="tester-info" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="value" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="user-name" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="value" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="dmm-info" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="value" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="timestamp" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="value" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ini-security" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="value" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="component-versions" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="version" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="name" type="xs:string" />
+                        <xs:attribute name="version-number" type="xs:string" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="test_set" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="group" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="test" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="config" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element ref="value" minOccurs="0" maxOccurs="unbounded" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="operations" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="info" nillable="true" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:simpleContent msdata:ColumnName="info_Text" msdata:Ordinal="2">
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute name="text" type="xs:string" />
+                                        <xs:attribute name="extended-info" type="xs:string" />
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="check" nillable="true" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:simpleContent msdata:ColumnName="check_Text" msdata:Ordinal="10">
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute name="name" type="xs:string" />
+                                        <xs:attribute name="value" type="xs:string" />
+                                        <xs:attribute name="value-type" type="xs:string" />
+                                        <xs:attribute name="expected" type="xs:string" />
+                                        <xs:attribute name="expected-type" type="xs:string" />
+                                        <xs:attribute name="expected-low" type="xs:string" />
+                                        <xs:attribute name="expected-high" type="xs:string" />
+                                        <xs:attribute name="extended-info" type="xs:string" />
+                                        <xs:attribute name="result" type="xs:string" />
+                                        <xs:attribute name="side" type="xs:string" />
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element ref="value" minOccurs="0" maxOccurs="unbounded" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="error-info" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="error" nillable="true" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:simpleContent msdata:ColumnName="error_Text" msdata:Ordinal="0">
+                                      <xs:extension base="xs:string">
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="title" type="xs:string" />
+                        <xs:attribute name="checked" type="xs:string" />
+                        <xs:attribute name="test-class" type="xs:string" />
+                        <xs:attribute name="test-id" type="xs:string" />
+                        <xs:attribute name="retest" type="xs:string" />
+                        <xs:attribute name="test-sequence-number" type="xs:string" />
+                        <xs:attribute name="test-group-sequence-number" type="xs:string" />
+                        <xs:attribute name="result" type="xs:string" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="title" type="xs:string" />
+                  <xs:attribute name="group-id" type="xs:string" />
+                  <xs:attribute name="group-sequence-number" type="xs:string" />
+                  <xs:attribute name="retest" type="xs:string" />
+                  <xs:attribute name="result" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="format-version" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="value" />
+        <xs:element ref="test_report" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

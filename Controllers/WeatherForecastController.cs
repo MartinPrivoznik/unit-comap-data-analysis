@@ -11,20 +11,20 @@ namespace UnIT_ComAp.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class DataController : ControllerBase
     {
         private readonly WeatherManager _weatherManager;
 
-        public WeatherForecastController(WeatherManager weatherManager)
+        public DataController(WeatherManager weatherManager)
         {
             _weatherManager = weatherManager;
         }
 
         [HttpGet]
-        public async Task<ActionResult<Weather>> Get()
+        public async Task<ActionResult<bool>> Get()
         {
             await _weatherManager.InsertWeather();
-            return Ok(new Weather());
+            return Ok(true);
         }
     }
 }
