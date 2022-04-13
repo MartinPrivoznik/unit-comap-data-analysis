@@ -1,13 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace UnIT_ComAp.Models.DbModel
 {
     public class TestOperation
     {
-        public int Id { get; set; }
-        public int HeadId { get; set; }
-        public int GroupId { get; set; }
-        public string TestId { get; set; }
+        public long Id { get; set; }
+        public long HeadId { get; set; }
+        public long GroupId { get; set; }
+        public long TestId { get; set; }
 
         public string Type { get; set; }
 
