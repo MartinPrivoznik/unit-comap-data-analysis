@@ -42,7 +42,7 @@ namespace UnIT_ComAp.Controllers
             {
                 return Ok(_reportsManager.GetProductNames());
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return Conflict(ex);
             }
@@ -54,6 +54,19 @@ namespace UnIT_ComAp.Controllers
             try
             {
                 return Ok(_reportsManager.GetLastTestsBySn(deviceName));
+            }
+            catch (Exception ex)
+            {
+                return Conflict(ex);
+            }
+        }
+
+        [HttpGet("allTestGroupsForDevice")]
+        public ActionResult<IEnumerable<TestGroup>> GetTestGroupsForDevice(string deviceName, string deviceSn)
+        {
+            try
+            {
+                return Ok(_reportsManager.GetAllTestGroupsForDevice(deviceName, deviceSn));
             }
             catch (Exception ex)
             {
