@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react';
 
 const ProductList = () => {
-  return (
-    <>
-      <a href="">
-        <div>
-          <h2>PG24A</h2>
-          <span>Detail</span>
-        </div>
-      </a>
-    </>
-  );
+  const productNames = ['a', 'b'];
+  const ProductCards = productNames.map((name) => (
+    <a href={`/${name}`} key={name}>
+      <div>
+        <h2>{name}</h2>
+        <span>Detail</span>
+      </div>
+    </a>
+  ));
+  return <>{ProductCards}</>;
 };
 
 export default ProductList;
