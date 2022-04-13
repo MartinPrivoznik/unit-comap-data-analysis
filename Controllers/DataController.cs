@@ -22,10 +22,19 @@ namespace UnIT_ComAp.Controllers
             _reportsManager = reportsManager;
         }
 
+        [HttpGet("init")]
+        public async Task<ActionResult<bool>> Init()
+        {
+            await _reportsManager.InsertData();
+            return true;
+        }
+
         [HttpGet]
         public ActionResult<IEnumerable<TestHead>> Get()
         {
+            //_reportsManager.InsertData();
             return Ok(_reportsManager.GetAllTestData());
+            //return Ok(_reportsManager.GetAllTestData());
         }
     }
 }

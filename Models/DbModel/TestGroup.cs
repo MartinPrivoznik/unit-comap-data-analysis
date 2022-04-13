@@ -7,9 +7,10 @@ namespace UnIT_ComAp.Models.DbModel
 {
     public class TestGroup
     {
-        public long HeadId { get; set; }
+        public string HeadId { get; set; }
         public long Id { get; set; }
         public bool Success { get; set; }
+        public string Title { get; set; }
 
         [NotMapped]
         public IEnumerable<Test> Tests { get; set; }

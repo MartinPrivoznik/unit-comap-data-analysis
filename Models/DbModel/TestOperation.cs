@@ -6,7 +6,7 @@ namespace UnIT_ComAp.Models.DbModel
     public class TestOperation
     {
         public long Id { get; set; }
-        public long HeadId { get; set; }
+        public string HeadId { get; set; }
         public long GroupId { get; set; }
         public long TestId { get; set; }
 

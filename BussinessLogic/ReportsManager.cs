@@ -42,59 +42,105 @@ namespace UnIT_ComAp.BussinessLogic
             return head;
         }
 
-        public async Task InsertSmart()
+        public Task InsertData()
         {
-
-            XmlSerializer serializer = new XmlSerializer(typeof(Object));
-            using (FileStream fileStream = new FileStream("C:/Users/petrp/OneDrive/Plocha/IL4_PG24A21510A00_FAIL_PART1_04a1dbd7-d657-4078-9df7-aff4f41152aa.xml", FileMode.Open))
+            return Task.Run(() =>
             {
-                Head testHead = (Head)serializer.Deserialize(fileStream);
-                Group testGroup = (Group)serializer.Deserialize(fileStream);
-                Models.Schemes.Test test = (Models.Schemes.Test)serializer.Deserialize(fileStream);
-                Operations testOperations = (Operations)serializer.Deserialize(fileStream);
+                var files = Directory.GetFiles(@"C:\Development\unit-comap-data-analysis\reports\PG24A\");
 
-                var newHead = new TestHead()
+                
+
+                foreach (var fileName in files)
                 {
-                    Id = 1,
-                    DateSOfTesting = DateTime.Parse(testHead.Timestamp.Value),
-                    ProductName = testHead.Product.Name,
-                    ProductSN = testHead.Product.Sn,
-                    Success = testHead.Securitycheck.Value == "PASS" ? true : false
-                };
+                    string headGuid = Guid.NewGuid().ToString();
+                    XmlSerializer serializer = new XmlSerializer(typeof(Test_report));
+                    using (FileStream fileStream = new FileStream(fileName, FileMode.Open))
+                    {
+                        Test_report report = (Test_report)serializer.Deserialize(fileStream);
 
-                _reportsDatabase.Add(newHead);
+                        var head = new TestHead()
+                        {
+                            Id = headGuid,
+                            ProductName = report.Head.Product.Name,
+                            ProductSN = report.Head.Product.Sfidstring,
+                            DateSOfTesting = DateTime.Parse(report.Head.Timestamp.Value),
+                            Success = report.Head.Result.Value == "PASS"
+                        };
 
-                var newGroup = new TestGroup()
-                {
-                    Id = int.Parse(testGroup.Groupid),
-                    HeadId = newHead.Id,
-                    Success = testGroup.Result == "PASS" ? true : false
-                };
+                        _reportsDatabase.Add(head);
 
-                _reportsDatabase.Add(newGroup);
+                        long j = 1;
 
-                var newTest = new Models.DbModel.Test()
-                {
-                    Id = int.Parse(test.Testid),
-                    HeadId = newHead.Id,
-                    GroupId = newGroup.Id,
-                    Title = test.Title
-                };
+                        foreach (var grp in report.Test_set.Group)
+                        {
+                            var group = new TestGroup()
+                            {
+                                Id = j,
+                                HeadId = headGuid,
+                                Success = grp.Result == "PASS",
+                                Title = grp.Title
+                            };
 
-                _reportsDatabase.Add(newTest);
+                            _reportsDatabase.Add(group);
 
-                var newTestOperation = new TestOperation()
-                {
-                    //Id = int.Parse(testOperations.Check),
-                    HeadId = newHead.Id,
-                    GroupId = newGroup.Id,
-                    TestId = newTest.Id,
-                    Type = testOperations.Check == null ? "info" : "check",  /* Asi lépe by to chtělo :D */
-                    Name = "" //Type check/info raději List
-                };
+                            long i = 1;
 
-                _reportsDatabase.Add(newTest);
-            }
+                            foreach (var tst in grp.Test)
+                            {
+                                var test = new Models.DbModel.Test()
+                                {
+                                    Id = i,
+                                    GroupId = j,
+                                    HeadId = headGuid,
+                                    Title = tst.Title
+                                };
+
+                                _reportsDatabase.Add(test);
+
+                                long k = 1;
+
+                                foreach (var op in tst.Operations.Check)
+                                {
+                                    var operation = new TestOperation()
+                                    {
+                                        Id = k,
+                                        HeadId = headGuid,
+                                        GroupId = j,
+                                        TestId = i,
+                                        Name = op.Name,
+                                        Type = "check",
+                                        Value = op.Value,
+                                        ExpectedLow = op.Expectedlow,
+                                        ExpectedHigh = op.Expectedhigh,
+                                        Result = op.Result
+                                    };
+
+                                    k++;
+                                    _reportsDatabase.Add(operation);
+                                }
+
+                                foreach (var op in tst.Operations.Info)
+                                {
+                                    var operation = new TestOperation()
+                                    {
+                                        Id = k,
+                                        HeadId = headGuid,
+                                        GroupId = j,
+                                        TestId = i,
+                                        Text = op._Text
+                                    };
+
+                                    k++;
+                                    _reportsDatabase.Add(operation);
+                                }
+                                i++;
+                            }
+                            j++;
+                        }
+                        _reportsDatabase.SaveChanges();
+                    }
+                }
+            });
         }
     }
 }
