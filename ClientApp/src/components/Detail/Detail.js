@@ -1,46 +1,39 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import DataTable from "../DataTable/DataTable";
 import "./Detail.css";
 
-const fuck = "PASS";
-
-const Detail = () => {
+const Detail = (params) => {
+  console.log(params);
   return (
     <>
       <div className="row">
         <div className="col-md-6">
-          <h4>IL4 PG24A</h4>
-          <h2>S/N: 21510A00</h2>
+          <h4>{params.productName}</h4>
+          <h2>S/N: {params.productSn}</h2>
         </div>
         <div className="col-md-6">
-          <h1 className={fuck == "PASS" ? "greenTitle" : "redTitle"}>PASS</h1>
+          <h1 className={params.Success ? "greenTitle" : "redTitle"}>
+            {params.Success ? "PASS" : "FAIL"}
+          </h1>
         </div>
       </div>
       <div className="row">
         <div className="col-md-4">
           <h4>Device</h4>
           <p>
-            Name: ....
+            Name: {params.productName}
             <br />
-            SF-CODE: ... <br />
-            Family" .... <br />
+            SF-CODE: {params.productSn} <br />
           </p>
         </div>
         <div className="col-md-4">
           <h4>Test details</h4>
           <p>
-            Test total time: ....
+            Test total time: {params.testTime}
             <br />
-            Tester: ... <br />
-            ...." .... <br />
+            Tester: {params.testerInfo} <br />
+            <br />
           </p>
-        </div>
-        <div className="col-md-4">
-          <h4>Components</h4>
-          <ul>
-            <li>Jmeno - Verze</li>
-            <li>Jmeno - Verze</li>
-          </ul>
         </div>
       </div>
       <ul className="nav nav-pills nav-justified" role="tablist">

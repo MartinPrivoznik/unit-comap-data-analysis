@@ -44,7 +44,14 @@ export const getLastTestsBySn = async (deviceName) => {
 
 export const getAllTestsForGroup = async (deviceName, deviceSn, groupId) => {
   try {
-    const response = await get("api/allTestsForGroup?deviceName=" + deviceName + "&deviceSn=" + deviceSn + "&groupId=" + groupId);
+    const response = await get(
+      "api/allTestsForGroup?deviceName=" +
+        deviceName +
+        "&deviceSn=" +
+        deviceSn +
+        "&groupId=" +
+        groupId
+    );
     return response.data;
   } catch (err) {
     console.log(err);
@@ -54,7 +61,29 @@ export const getAllTestsForGroup = async (deviceName, deviceSn, groupId) => {
 
 export const getTestGroupsForDevice = async (deviceName, deviceSn) => {
   try {
-    const response = await get("api/allTestGroupsForDevice?deviceName=" + deviceName + "&deviceSn=" + deviceSn);
+    const response = await get(
+      "api/allTestGroupsForDevice?deviceName=" +
+        deviceName +
+        "&deviceSn=" +
+        deviceSn
+    );
+    return response.data;
+  } catch (err) {
+    console.log(err);
+    return errmsg;
+  }
+};
+
+export const GetTestsForGroup = async (deviceName, deviceSn, groupId) => {
+  try {
+    const response = await get(
+      "api/allTestsForGroup?deviceName=" +
+        deviceName +
+        "&deviceSn=" +
+        deviceSn +
+        "&groupId=" +
+        groupId
+    );
     return response.data;
   } catch (err) {
     console.log(err);
